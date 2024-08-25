@@ -1,55 +1,155 @@
+/* Basic reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-  }
-  
-.scanner-container {
-    max-width: 600px;
-    margin: 40px auto;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Parallax effect */
+.parallax {
+    background-image: url('background-image.jpg');
+    height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Profile card styling */
+.profile-card {
+    background-color: white;
+    border-radius: 10px;
     padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-#scan-button {
-    background-color: #4CAF50;
-    color: #fff;
+    max-width: 400px;
+    margin: -150px auto 50px auto;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.5s;
+}
+
+.profile-card.dark-theme {
+    background-color: #333;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+body.dark-theme h1 {
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #666;
+}
+
+body.dark-theme .subtitle {
+    color: #bbbbbb;
+}
+
+.description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+body.dark-theme .description {
+    color: #cccccc;
+}
+
+/* Sections styling */
+.section {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+body.dark-theme .section h2 {
+    color: #ffffff;
+}
+
+.section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.section ul li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+body.dark-theme .section ul li {
+    color: #cccccc;
+}
+
+.contact-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+body.dark-theme .contact-info p {
+    color: #cccccc;
+}
+
+.contact-btn {
     padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-#scan-button:hover {
-    background-color: #3e8e41;
-  }
-  
-#device-list {
-    margin-top: 20px;
-  }
-  
-#device-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-#device-ul li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-#device-ul li:last-child {
-    border-bottom: none;
-  }
-  
-#device-ul li::before {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #4CAF50;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
+    margin-top: 10px;
+}
+
+.contact-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.theme-toggle .material-icons {
+    font-size: 36px;
+    color: #333;
+}
+
+body.dark-theme .theme-toggle .material-icons {
+    color: #ffffff;
+}
