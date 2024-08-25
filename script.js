@@ -20,7 +20,7 @@ function getDeviceIPs() {
       const ipParts = ipAddress.split('.');
       const ipBase = ipParts.slice(0, 3).join('.') + '.';
       const devices = [];
-      for (let i = 1; i <= 2000; i++) {
+      for (let i = 1; i <= 254; i++) {
         const devIp = ipBase + i;
         devices.push({
           ip: devIp,
