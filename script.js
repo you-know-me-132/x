@@ -26,7 +26,7 @@ function onDrag(e) {
 
     currentX = e.pageX || e.touches[0].pageX;
     let offsetX = currentX - startX;
-    this.style.transform = `translateX(${offsetX}px) rotate(${offsetX / 10}deg)`;
+    this.style.transform = `translateX(${offsetX}px)`;
 }
 
 function endDrag(e) {
@@ -37,12 +37,23 @@ function endDrag(e) {
     this.style.transition = 'transform 0.3s ease';
 
     if (Math.abs(offsetX) > 100) {  // Swipe threshold
-        this.style.transform = `translateX(${offsetX > 0 ? 1000 : -1000}px) rotate(${offsetX / 10}deg)`;
-        cardIndex++;
-        if (cardIndex < cards.length) {
-            cards[cardIndex].style.zIndex = cards.length - cardIndex;  // Update z-index for the next card
+        if (offsetX > 0 && cardIndex > 0) {
+            // Swipe right to go to the previous card
+            cardIndex--;
+        } else if (offsetX < 0 && cardIndex < cards.length - 1) {
+            // Swipe left to go to the next card
+            cardIndex++;
         }
+
+        updateCardPosition();
     } else {
-        this.style.transform = 'translateX(0) rotate(0)';
+        // Snap back if swipe is not significant
+        updateCardPosition();
     }
+}
+
+function updateCardPosition() {
+    cards.forEach((card, index) => {
+        card.style.transform = `translateX(${(index - cardIndex) * 100}%)`;
+    });
 }
